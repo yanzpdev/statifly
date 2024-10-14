@@ -2,26 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: 'SpotifyMix';
+  src: url('/fonts/SpotifyMix-Regular.woff2') format('woff2'),
+       url('/fonts/SpotifyMix-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'SpotifyMix';
+  src: url('/fonts/SpotifyMix-Bold.woff2') format('woff2'),
+       url('/fonts/SpotifyMix-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
 }
 
+/* Apply the font globally */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  font-family: 'SpotifyMix', sans-serif;
+  @apply
+  bg-white
+  dark:bg-slate-900
+  duration-300
 }
