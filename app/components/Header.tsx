@@ -14,16 +14,13 @@ const Header = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // Close the dropdown if the click happens outside of the dropdown container
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setShowDropdown(false);
       }
     };
 
-    // Attach the event listener to detect clicks outside the dropdown
     document.addEventListener('mousedown', handleClickOutside);
 
-    // Cleanup the event listener when the component is unmounted
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
