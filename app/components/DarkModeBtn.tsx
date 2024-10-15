@@ -6,30 +6,31 @@ import { div } from 'framer-motion/m';
 import { motion } from 'framer-motion';
 
 const DarkmodeBtn = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const storedTheme = localStorage.getItem('theme');
-    return storedTheme === 'dark' ? true : false;
-  });
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark') {
+        setIsDarkMode(true);
+        document.documentElement.classList.add('dark');
+      }
+    }
+  }, []);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => {
       const newMode = !prevMode;
-      localStorage.setItem('theme', newMode ? 'dark' : 'light');
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('theme', newMode ? 'dark' : 'light');
+      }
       document.documentElement.classList.toggle('dark', newMode);
       return newMode;
     });
   };
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
   return (
-    <div className='flex items-center justify-between gap-2'>
+    <div className='flex items-center justify-between gap-2 w-fit'>
       {isDarkMode ?
         <motion.div 
           className=''
@@ -39,7 +40,7 @@ const DarkmodeBtn = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <FaSun className='text-yellow-400' size={24} />
+          <FaSun className='text-yellow-400' size={20} />
         </motion.div>
       :
         <motion.div 
@@ -55,9 +56,9 @@ const DarkmodeBtn = () => {
       }
       <Button
         onClick={toggleDarkMode}
-        className='px-2.5 py-1 rounded-full w bg-gray-300 dark:bg-green-500 duration-300 relative'
+        className='px-2.5 py-1 rounded-full bg-gray-300 dark:bg-green-500 duration-300 relative'
       >
-        <div className='bg-white w-6 h-6 dark:left-1.5 rounded-full relative -left-1.5 top-0 duration-150'/>
+        <div className='bg-white w-5 h-5 dark:left-1.5 rounded-full relative -left-1.5 top-0 duration-150'/>
       </Button>
     </div>
 

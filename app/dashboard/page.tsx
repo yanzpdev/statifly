@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Dashboard() {
   return(
-    <section>
+    <section className='w-full h-full bg-slate-100 dark:bg-slate-800'>
       <div>
         
       </div>
