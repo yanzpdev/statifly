@@ -1,8 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Button from './Button';
+import { Button } from "@/components/ui/button"
 import { FaSun, FaMoon } from "react-icons/fa";
-import { div } from 'framer-motion/m';
 import { motion } from 'framer-motion';
 
 const DarkmodeBtn = () => {
@@ -55,8 +54,9 @@ const DarkmodeBtn = () => {
         </motion.div>
       }
       <Button
+        variant={'ghost'}
         onClick={toggleDarkMode}
-        className='px-2.5 py-1 rounded-full bg-gray-300 dark:bg-green-500 duration-300 relative'
+        className='py-1 px-2.5 h-fit hover:bg-slate-200 rounded-full bg-gray-300 dark:hover:bg-green-400 dark:bg-green-500 duration-300 relative'
       >
         <div className='bg-white w-5 h-5 dark:left-1.5 rounded-full relative -left-1.5 top-0 duration-150'/>
       </Button>

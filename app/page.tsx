@@ -2,6 +2,7 @@
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -9,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     if (status === "authenticated"){
-      router.push('/dashboard'); 
+      router.push('/home'); 
     } 
     
     else if (status === "unauthenticated"){
@@ -19,10 +20,15 @@ export default function Home() {
 
   if (status === "loading"){
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
+      <div className="flex justify-center items-center h-screen bg-white dark:bg-slate-900">
+        <Image 
+          src={'/assets/ball-loading.gif'} 
+          alt={'Loading...'}          
+          width={500}
+          height={500} 
+          className="h-[100px] w-[100px] lg:w-[400px] lg:h-[400px]"
+          unoptimized
+        />
       </div>
     );
   }

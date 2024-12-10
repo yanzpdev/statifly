@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import React from 'react'
+import Footer from '../../components/Footer';
 
 export const metadata: Metadata = {
   title: "Log In",
-  description: "Log in to Statifly.",
+  description: "Log in to Statify.",
 };
 
 export default function LoginLayout({children}: {children:React.ReactNode}) {
@@ -12,9 +13,7 @@ export default function LoginLayout({children}: {children:React.ReactNode}) {
       <main>
         {children}
       </main>
-      <footer className='fixed bottom-0 w-full text-center text-xs bg-slate-100 py-2'>
-        Copyright © 2024 Statifly. All rights reserved.
-      </footer>
+      <Footer duration={0.5} />
     </>
   )
 }

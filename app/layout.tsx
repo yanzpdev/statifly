@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import AuthProvider from "./components/AuthProvider";
+import AuthProvider from "../components/AuthProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Statifly",
-  description: "Unlock the story behind your music journey! Track your top songs, artists, and genres with Statifly—your personal Spotify stat companion.",
+  title: "Statify",
+  description: "Unlock the story behind your music journey! Track your top songs, artists, and genres with Statify—your personal Spotify stat companion.",
 };
 
 export default function RootLayout({
